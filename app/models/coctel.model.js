@@ -6,7 +6,7 @@ const Coctel = function(coctel) {
   this.imgURL = Coctel.imgURL;
   this.alcohol = coctel.alcohol;
   this.glass = coctel.glass;
-  this.instruccion = coctel.instruccion;
+  //this.instruccion = coctel.instruccion;
   this.ingredient1 = coctel.ingredient1;
   this.ingredient2 = coctel.ingredient2;
   this.ingredient3 = coctel.ingredient3;
@@ -32,6 +32,26 @@ Coctel.create = (newCoctel, result) => {
 
     console.log("created Coctel: ", { id: res.insertId, ...newCoctel });
     result(null, { id: res.insertId, ...newCoctel });
+  });
+};
+
+
+Coctel.getAll = (name, result) => {
+  let query = "SELECT * FROM coctel";
+
+  if (name) {
+    query += ` WHERE name LIKE '%${name}%'`;
+  }
+
+  sql.query(query, (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(null, err);
+      return;
+    }
+
+    console.log("coctels: ", res);
+    result(null, res);
   });
 };
 

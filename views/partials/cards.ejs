@@ -1,0 +1,22 @@
+<main>
+    <% coctels.forEach(function(coctel) { %>
+          <div class="card">
+            <img src="<%= coctel.imgURL %>" class="card-img-top" alt="...">
+            <div>
+              <h5 class="card-name"><%= coctel.name %></h5>
+              <p class="card-text"><%= coctel.instruccion %></p>
+              <ul class="list-group">
+                <li class="list-group-item"><%= coctel.ingredient1 %></li>
+                <li class="list-group-item"><%= coctel.ingredient2 %></li>
+                <li class="list-group-item"><%= coctel.ingredient3 %></li>
+                <li class="list-group-item"><%= coctel.ingredient4 %></li>
+                <li class="list-group-item"><%= coctel.ingredient5 %></li>
+                <li class="list-group-item"><%= coctel.ingredient6 %></li>
+              </ul>
+              </div>
+              <button type="button"><%= coctel.alcohol %></button>
+              <button type="button"><%= coctel.glass %></button>
+          </div>
+        <br>
+ <% }); %>
+</main>

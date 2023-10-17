@@ -13,8 +13,8 @@ const Coctel = require("../models/coctel.model.js");
         const coctel = new Coctel({
           name: req.body.name,
           alcohol: req.body.alcohol,
-          glass: req.body.glasslass,
-          instruccion: req.body.instruction,
+          glass: req.body.glass,
+          //instruccion: req.body.instruction,
           imgURL: req.body.imgURL,
           ingredient1: req.body.ingredient1,
           ingredient2: req.body.ingredient2,
@@ -38,5 +38,20 @@ const Coctel = require("../models/coctel.model.js");
                 err.message || "Some error occurred while creating the Coctel."
             });
           else res.send(data);
+        });
+      };
+
+      exports.findAll = (req, res) => {
+        const name = req.query.name;
+      
+        Coctel.getAll(name, (err, data) => {
+          if (err)
+            res.status(500).send({
+              message:
+                err.message || "Some error occurred while retrieving coctels."
+            });
+          else res.render('pages/index', {
+            coctels: data
+          });
         });
       };

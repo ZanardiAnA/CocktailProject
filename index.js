@@ -10,9 +10,9 @@ var corsOptions = {
     origin: "http://localhost:8081"
 };
 
-/*app.set('view engine', 'ejs');
+app.set('view engine', 'ejs');
 
-app.set('views', path.join(__dirname, 'views'))*/
+app.set('views', path.join(__dirname, 'views'));
 
 app.use('/', express.static(path.join(__dirname, 'public')));
 
@@ -23,7 +23,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 
-app.get("/", (req, res) => {
+app.get("/api", (req, res) => {
 fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?f=a')
 .then(response => response.json())
 .then(data =>{
@@ -35,7 +35,7 @@ fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?f=a')
     name: element.strDrink,
     alcohol: element.strAlcoholic,
     glass: element.strGlass,
-    instruccion: element.strInstructions,
+   // instruccion: element.strInstructions,
     imgURL: element.strDrinkThumb,
     ingredient1: element.strIngredient1,
     ingredient2: element.strIngredient2,
