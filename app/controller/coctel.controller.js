@@ -14,7 +14,7 @@ const Coctel = require("../models/coctel.model.js");
           name: req.body.name,
           alcohol: req.body.alcohol,
           glass: req.body.glass,
-          //instruccion: req.body.instruction,
+          instruccion: req.body.instruction,
           imgURL: req.body.imgURL,
           ingredient1: req.body.ingredient1,
           ingredient2: req.body.ingredient2,

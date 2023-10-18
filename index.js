@@ -27,7 +27,6 @@ app.get("/api", (req, res) => {
 fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?f=a')
 .then(response => response.json())
 .then(data =>{
-     //console.log(data.drinks);
      //res.json(data.drinks);
      data.drinks.forEach(element => {
          // Create a Coctel
@@ -35,8 +34,8 @@ fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?f=a')
     name: element.strDrink,
     alcohol: element.strAlcoholic,
     glass: element.strGlass,
-   // instruccion: element.strInstructions,
-    imgURL: element.strDrinkThumb,
+    instruccion: element.strInstructions,
+    imgURL: element.strDrinkThumb ,
     ingredient1: element.strIngredient1,
     ingredient2: element.strIngredient2,
     ingredient3: element.strIngredient3,
@@ -50,7 +49,7 @@ fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?f=a')
     measure5: element.strMeasure5,
     measure6: element.strMeasure6*/
     });
-
+    //console.log(coctel.imgURL, element.strDrinkThumb);
    // Save Coctel in the database
    Coctel.create(coctel, (err, data) => {
     if (err)

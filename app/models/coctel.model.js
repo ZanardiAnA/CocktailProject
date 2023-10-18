@@ -3,10 +3,10 @@ const sql = require("./db.js");
 // constructor
 const Coctel = function(coctel) {
   this.name = coctel.name;
-  this.imgURL = Coctel.imgURL;
+  this.imgURL = coctel.imgURL;
   this.alcohol = coctel.alcohol;
   this.glass = coctel.glass;
-  //this.instruccion = coctel.instruccion;
+  this.instruccion = coctel.instruccion;
   this.ingredient1 = coctel.ingredient1;
   this.ingredient2 = coctel.ingredient2;
   this.ingredient3 = coctel.ingredient3;
@@ -22,7 +22,7 @@ const Coctel = function(coctel) {
 };
 
 Coctel.create = (newCoctel, result) => {
-  console.log("INSERT INTO coctel SET ?", newCoctel);
+  //console.log("INSERT INTO coctel SET ?", newCoctel);
   sql.query("INSERT INTO coctel SET ?", newCoctel, (err, res) => {
     if (err) {
       console.log("error: ", err);
@@ -30,7 +30,7 @@ Coctel.create = (newCoctel, result) => {
       return;
     }
 
-    console.log("created Coctel: ", { id: res.insertId, ...newCoctel });
+    //console.log("created Coctel: ", { id: res.insertId, ...newCoctel });
     result(null, { id: res.insertId, ...newCoctel });
   });
 };
